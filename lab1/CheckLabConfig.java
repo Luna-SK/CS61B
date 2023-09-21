@@ -14,7 +14,7 @@ public class CheckLabConfig {
 		String snapsRepoDir = System.getenv(snapsVariableName);
 
 		checkVariableNotNull(snapsRepoDir, snapsVariableName);
-		System.out.println("Validating your " + snapsVariableName + 
+		System.out.println("Validating your " + snapsVariableName +
 			               " environment variable, which is currently set to: " +
 			               snapsRepoDir);
 		checkIsValidRepo(snapsRepoDir, snapsVariableName, isWindows, true);
