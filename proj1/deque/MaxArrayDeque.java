@@ -39,4 +39,8 @@ public class MaxArrayDeque<T> extends ArrayDeque<T> {
         }
         return maxItem;
     }
+
+    public Iterator<T> iterator() {
+        return super.iterator();
+    }
 }
