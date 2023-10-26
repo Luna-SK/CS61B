@@ -82,6 +82,9 @@ public class ArrayDequeTest {
         String s = lld1.removeFirst();
         double d = lld2.removeFirst();
         boolean b = lld3.removeFirst();
+        assertEquals("string", s);
+        assertEquals(3.14159, d, 0.0);
+        assertTrue(b);
     }
 
     @Test
@@ -108,5 +111,18 @@ public class ArrayDequeTest {
         assertEquals(5, ad.get(0).intValue());
         ad.removeFirst();
         assertTrue(ad.isEmpty());
+    }
+
+    @Test
+    public void equalsTest() {
+        LinkedListDeque<Integer> lld = new LinkedListDeque<>();
+        ArrayDeque<Integer> ad = new ArrayDeque<>();
+        lld.addFirst(3);
+        lld.addLast(5);
+        lld.addLast(7);
+        ad.addFirst(3);
+        ad.addLast(5);
+        ad.addLast(7);
+        assertTrue(lld.equals(ad));
     }
 }

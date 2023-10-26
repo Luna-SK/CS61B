@@ -5,6 +5,23 @@ import java.util.Iterator;
 public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
     private int size;
     private final Node sentinel;
+
+    public boolean equals(Object o) {
+        if (o instanceof Deque) {
+            Deque<T> l = (Deque<T>) o;
+            if (l.size() != this.size()) {
+                return false;
+            }
+            for (int i = 0; i < this.size(); i++) {
+                if (!l.get(i).equals(this.get(i))) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
     private class Node {
         private T item;
         private Node next;
@@ -53,22 +70,6 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
         sentinel.prev.next = node;
         sentinel.prev = node;
         size += 1;
-    }
-
-    public boolean equals(Object o) {
-        if (o instanceof LinkedListDeque) {
-            LinkedListDeque<T> l = (LinkedListDeque<T>) o;
-            if (l.size() != size) {
-                return false;
-            }
-            for (int i = 0; i < size; i++) {
-                if (!l.get(i).equals(this.get(i))) {
-                    return false;
-                }
-            }
-            return true;
-        }
-        return false;
     }
 
     public int size() {

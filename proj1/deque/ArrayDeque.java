@@ -6,7 +6,8 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
     private T[] items;
     private int size;
     private int capacity;
-    private int firstIndex, lastIndex;
+    private int firstIndex;
+    private int lastIndex;
 
     public ArrayDeque() {
         items = (T[]) new Object[16];
@@ -18,14 +19,14 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
 
         private int currentIndex;
         ADequeIterator() {
-            currentIndex = (firstIndex + size - 1) % size;
+            currentIndex = (firstIndex + capacity - 1) % capacity;
         }
         public boolean hasNext() {
             return currentIndex != lastIndex;
         }
 
         public T next() {
-            currentIndex = (currentIndex + 1) % size;
+            currentIndex = (currentIndex + 1) % capacity;
             return items[currentIndex];
         }
     }
@@ -78,12 +79,12 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
     }
 
     public boolean equals(Object o) {
-        if (o instanceof ArrayDeque) {
-            LinkedListDeque<T> l = (LinkedListDeque<T>) o;
-            if (l.size() != size) {
+        if (o instanceof Deque) {
+            Deque<T> l = (Deque<T>) o;
+            if (l.size() != this.size()) {
                 return false;
             }
-            for (int i = 0; i < size; i++) {
+            for (int i = 0; i < this.size(); i++) {
                 if (!l.get(i).equals(this.get(i))) {
                     return false;
                 }
@@ -136,6 +137,9 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
     }
 
     public T get(int index) {
+        if (index > size - 1) {
+            return null;
+        }
         return items[(firstIndex + index) % capacity];
     }
 
