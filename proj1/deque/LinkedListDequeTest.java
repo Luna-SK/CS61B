@@ -122,4 +122,48 @@ public class LinkedListDequeTest {
             assertEquals("Should have the same value", i, (double) lld1.removeLast(), 0.0);
         }
     }
+
+    @Test
+    public void randomAddRemoveTest() {
+        LinkedListDeque<Integer> l = new LinkedListDeque<>();
+        assertTrue(l.isEmpty());
+        l.addFirst(3);
+        assertEquals(l.removeLast().intValue(), 3);
+        l.addFirst(5);
+        assertEquals(l.removeLast().intValue(), 5);
+    }
+
+    @Test
+    public void iterativeGetTest() {
+        LinkedListDeque<Integer> l = new LinkedListDeque<>();
+        l.addFirst(1);
+        l.addLast(2);
+        l.addFirst(3);
+        l.removeLast();      // ==> 2
+        l.removeFirst();     // ==> 3
+        l.removeLast();      // ==> 1
+        l.addLast(7);
+        l.addFirst(8);
+        l.addFirst(9);
+        l.removeLast();      // ==> 7
+        l.addLast(11);
+        assertEquals(8, l.get(1).intValue());
+    }
+
+    @Test
+    public void RecursiveGetTest() {
+        LinkedListDeque<Integer> l = new LinkedListDeque<>();
+        l.addFirst(1);
+        l.addLast(2);
+        l.addFirst(3);
+        l.removeLast();      // ==> 2
+        l.removeFirst();     // ==> 3
+        l.removeLast();      // ==> 1
+        l.addLast(7);
+        l.addFirst(8);
+        l.addFirst(9);
+        l.removeLast();      // ==> 7
+        l.addLast(11);
+        assertEquals(8, l.getRecursive(1).intValue());
+    }
 }

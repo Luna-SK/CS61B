@@ -17,7 +17,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
     private class ADequeIterator implements Iterator<T> {
 
         private int currentIndex;
-        public ADequeIterator() {
+        ADequeIterator() {
             currentIndex = (firstIndex + size - 1) % size;
         }
         public boolean hasNext() {
@@ -75,10 +75,6 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         lastIndex = (lastIndex + 1) % capacity;
         items[lastIndex] = item;
         size += 1;
-    }
-
-    public boolean isEmpty() {
-        return size == 0;
     }
 
     public boolean equals(Object o) {

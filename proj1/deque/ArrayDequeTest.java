@@ -96,4 +96,17 @@ public class ArrayDequeTest {
         assertEquals("Should return null when removeFirst is called on an empty Deque,", null, lld1.removeFirst());
         assertEquals("Should return null when removeLast is called on an empty Deque,", null, lld1.removeLast());
     }
+
+    @Test
+    public void fillUpEmptyFillUpAgainTest() {
+        ArrayDeque<Integer> ad = new ArrayDeque<>();
+        ad.addFirst(3);
+        assertEquals(3, ad.get(0).intValue());
+        ad.removeFirst();
+        assertTrue(ad.isEmpty());
+        ad.addLast(5);
+        assertEquals(5, ad.get(0).intValue());
+        ad.removeFirst();
+        assertTrue(ad.isEmpty());
+    }
 }
