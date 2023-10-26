@@ -13,6 +13,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         items = (T[]) new Object[16];
         size = 0;
         capacity = 16;
+        firstIndex = lastIndex = 0;
     }
 
     private class ADequeIterator implements Iterator<T> {
@@ -22,7 +23,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
             currentIndex = (firstIndex + capacity - 1) % capacity;
         }
         public boolean hasNext() {
-            return currentIndex != lastIndex;
+            return !(isEmpty() || currentIndex == lastIndex);
         }
 
         public T next() {

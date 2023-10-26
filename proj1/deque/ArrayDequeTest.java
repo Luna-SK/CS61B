@@ -125,4 +125,10 @@ public class ArrayDequeTest {
         ad.addLast(7);
         assertTrue(lld.equals(ad));
     }
+
+    @Test
+    public void emptyIteratorTest() {
+        ArrayDeque<Integer> ad = new ArrayDeque<>();
+        assertFalse(ad.iterator().hasNext());
+    }
 }
