@@ -115,7 +115,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
             return null;
         }
         if (isReadyToDesc()) {
-            resize(capacity >>= 2);
+            resize(capacity >> 2);
         }
         T returnItem = items[firstIndex];
         items[firstIndex] = null;
@@ -129,7 +129,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
             return null;
         }
         if (isReadyToDesc()) {
-            resize(capacity >>= 2);
+            resize(capacity >> 2);
         }
         T returnItem = items[lastIndex];
         lastIndex = (lastIndex + capacity - 1) % capacity;
