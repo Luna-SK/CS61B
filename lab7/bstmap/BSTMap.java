@@ -42,7 +42,7 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V>, Iterabl
 
         @Override
         public K next() {
-            return keys.removeFirst();
+            return keys.remove(0);
         }
     }
 
