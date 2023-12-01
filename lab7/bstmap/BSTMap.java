@@ -1,7 +1,5 @@
 package bstmap;
 
-import edu.princeton.cs.algs4.BST;
-
 import java.util.*;
 
 public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V>, Iterable<K> {
@@ -197,7 +195,7 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V>, Iterabl
         int compareKey = key.compareTo(node.key);
         if (compareKey > 0) {
             node.right = remove(node.right, key, value);
-        } else if (compareKey < 0){
+        } else if (compareKey < 0) {
             node.left = remove(node.left, key, value);
         } else {
             if (value.equals(node.value)) {
