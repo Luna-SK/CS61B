@@ -203,12 +203,60 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
 
     @Override
     public V remove(K key) {
-        throw new UnsupportedOperationException();
+        int index = hash(key);
+        if (buckets[index] == null) {
+            return null;
+        }
+        Node result = findNode(buckets[index], key);
+        buckets[index].remove(result);
+        if (buckets[index].isEmpty()) {
+            buckets[index] = null;
+        }
+        elementsCount--;
+        updateLoadFactor();
+        return result.value;
     }
 
     @Override
     public V remove(K key, V value) {
-        throw new UnsupportedOperationException();
+        int index = hash(key);
+        if (buckets[index] == null) {
+            return null;
+        }
+        Node result = findNode(buckets[index], key, value);
+        if (result == null) {
+            return null;
+        } else {
+            buckets[index].remove(result);
+            if (buckets[index].isEmpty()) {
+                buckets[index] = null;
+            }
+            elementsCount--;
+            updateLoadFactor();
+            return result.value;
+        }
+    }
+
+    private Node findNode(Collection<Node> nodes, K key) {
+        for (Node node : nodes) {
+            if (key.equals(node.key)) {
+                return node;
+            }
+        }
+        return null;
+    }
+
+    private Node findNode(Collection<Node> nodes, K key, V value) {
+        for (Node node : nodes) {
+            if (key.equals(node.key)) {
+                if (value.equals(node.value)) {
+                    return node;
+                } else {
+                    return null;
+                }
+            }
+        }
+        return null;
     }
 
     @Override
