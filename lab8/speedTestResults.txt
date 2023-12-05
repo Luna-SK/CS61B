@@ -1,0 +1,40 @@
+ This program inserts random Strings of length L
+ Into different types of maps as <String, Integer> pairs.
+
+What would you like L to be?: 10
+
+Enter # strings to insert into hashmap.ULLMap: 10000
+class hashmap.ULLMap: 0.31 sec
+
+Enter # strings to insert into your hashmap.MyHashMap: 10000
+class hashmap.MyHashMap: 0.02 sec
+
+Enter # strings to insert into Java's HashMap: 10000
+Java's Built-in HashMap: 0.01 sec
+
+---
+
+ This program inserts random Strings of length L
+ Into different types of maps as <String, Integer> pairs.
+
+What would you like L to be?: 10
+
+Enter # strings to insert into hashmap.ULLMap: 10000
+class hashmap.ULLMap: 0.31 sec
+
+Enter # strings to insert into your hashmap.MyHashMap: 10000
+class hashmap.MyHashMap: 0.02 sec
+
+Enter # strings to insert into Java's HashMap: 10000
+Java's Built-in HashMap: 0.00 sec
+
+---
+
+When would it be better to use a BSTMap/TreeMap instead of a HashMap?
+
+Answer:
+  If we want to keep its entries sorted according to the natural ordering
+of its keys or by a comparator provided at map creation time, or need to
+perform range queries, BSTMap/TreeMap is a better choice because it maintains
+order. If we don’t need the ordering properties, a HashMap would be a more
+efficient choice.
